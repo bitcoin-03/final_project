@@ -104,14 +104,11 @@
 
 ### 1) FrontEnd (Streamlit)
 
-- 사용자 인터페이스 제공 : 이미지 업로드, 크롭, 전시 등
-- 서비스 결과 전시 : 제품 유형, 유사 제품 이미지 등
+- 
 
 ### 2) BackEnd (FastAPI)
 
-- Model 과 FrontEnd 를 연결
-- Client로부터 데이터를 수신하여 Inference 모듈을 호출
-- Inference 모듈로부터 추론 결과를 수신하여 Client로 전송
+- 
 
 ### 3) Github Action
 
