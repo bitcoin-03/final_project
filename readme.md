@@ -73,7 +73,7 @@
 
 ### 1) 데이터셋 구성 파이프라인
 
-![dataflow](https://user-images.githubusercontent.com/37561451/173112343-a9b22dbb-fdb6-4842-a3bc-1b248b7a9f1f.png)
+![dataflow](https://user-images.githubusercontent.com/37561451/173118470-c75e7061-62f1-49b4-96a5-4af453f5facd.png)
 
 ### 2) 데이터셋 수집
 
