@@ -104,17 +104,40 @@
 
 ### 1) FrontEnd (Streamlit)
 
-- 
+- 사용자가 이미지를 업로드할 인터페이스
+- 닮은 배우 이미지, 일치율, 배우 이름 출력
+- 카카오톡 공유 버튼
+- 각종 UI 디자인
+- 도메인 주소 할당
 
 ### 2) BackEnd (FastAPI)
 
-- 
+   ![flow chart](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47a1da38-f620-4a37-ae79-6966194cfdb7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220613%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220613T064557Z&X-Amz-Expires=86400&X-Amz-Signature=97f2429a377a67c7ca856fe91bea346cb1dae38ba7ba8b4cdddb192208698c5a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+- 1.user가 이미지 업로드 → 2. server에 detect 요청 → 전처리 → 3. client에 결과 반환 → 4. client는 얼굴이 감지된 경우와 감지되지 않은 경우를 분기처리 → 5. server는 classification 수행 시 닮은 배우 이름을 통해 GCP storage에서 배우 이미지를 가져와 client로 보냄   
 
-### 3) Github Action
+<br/>
 
-- 
+   ![flow chart](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/06c0c9ba-eefc-4e8b-bd7e-63a8c6710b4a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220613%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220613T064753Z&X-Amz-Expires=86400&X-Amz-Signature=867234811f3e9f66e5fac328dc2c4cc1194af5a25d90d67a9c7131ed4e64ad98&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+- 1.client에서 user이미지, 배우 이미지와 함께 server에 makeup요청 → 2. server가 전처리 후 makeup transfer 수행 → 3. 배우의 화장이 입혀진 user 이미지를 client로 보냄
 
-### 4) Getting Started!
+### 3) Logging
+- Google Cloud Bigquery를 사용하여 로깅 구축
+- 수집 데이터 목록
+   1. user와 닮은 배우의 이름
+   2. user와 배우와의 일치율
+   3. backend에서 BeautyGAN inference시간
+   4. frontend에서 makeup-transfer request-response 시간
+   5. 사용자가 image로 결과를 보기까지의 시간
+   6. 전처리 과정에서 user 사진에서 detect된 얼굴의 수
+   7. backend에서 classification inference시간
+   8. frontend에서 classification request-response 시간
+
+### 4) Github Action
+
+- github action을 통해 간단한 배포 자동화 구축
+- github main으로 push event 발생 시 google compute engine에 배포를 요청
+
+### 5) Getting Started!
 
 1. Python requirements
    `Python`: 3.7.13
