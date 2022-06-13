@@ -201,3 +201,5 @@
 ------
 
 ## 8️⃣ 팀원 소개
+![image](https://user-images.githubusercontent.com/78528903/173313460-444b8f29-f743-422f-9586-d7356c51ed61.png)
+
