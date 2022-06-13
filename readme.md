@@ -112,12 +112,12 @@
 
 ### 2) BackEnd (FastAPI)
 
-   ![flow chart](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47a1da38-f620-4a37-ae79-6966194cfdb7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220613%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220613T064557Z&X-Amz-Expires=86400&X-Amz-Signature=97f2429a377a67c7ca856fe91bea346cb1dae38ba7ba8b4cdddb192208698c5a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+   ![flow chart](https://user-images.githubusercontent.com/78528903/173296222-258e2bef-e0a9-4c16-ad0d-fee829871e1a.png)
 - 1.user가 이미지 업로드 → 2. server에 detect 요청 → 전처리 → 3. client에 결과 반환 → 4. client는 얼굴이 감지된 경우와 감지되지 않은 경우를 분기처리 → 5. server는 classification 수행 시 닮은 배우 이름을 통해 GCP storage에서 배우 이미지를 가져와 client로 보냄   
 
 <br/>
 
-   ![flow chart](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/06c0c9ba-eefc-4e8b-bd7e-63a8c6710b4a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220613%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220613T064753Z&X-Amz-Expires=86400&X-Amz-Signature=867234811f3e9f66e5fac328dc2c4cc1194af5a25d90d67a9c7131ed4e64ad98&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+   ![image](https://user-images.githubusercontent.com/78528903/173296349-4e5f2a4d-88e8-4a51-aba5-a82523c23657.png)
 - 1.client에서 user이미지, 배우 이미지와 함께 server에 makeup요청 → 2. server가 전처리 후 makeup transfer 수행 → 3. 배우의 화장이 입혀진 user 이미지를 client로 보냄
 
 ### 3) Logging
