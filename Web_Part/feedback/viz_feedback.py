@@ -31,14 +31,14 @@ def user_actor_gender_class(original_gender: str, actor_gender: str):
 
 
 def transform_beautyGAN_feedback_into_int(original:str):
-    if original=='배우와 더 닮아보인다':
+    if original=='배우와 더 닮아보인다.':
         return 1
     elif original=='차이가 없다.':
         return 0
     elif original=='더 이상하다.':
         return -1
     else:
-        print('Wrong in the original feedback of beautyGAN')
+        print(f'Wrong in the original feedback of beautyGAN {original}')
         raise NotImplementedError
 
 #%% Set matplotlib style
@@ -95,6 +95,9 @@ df_feedback = df_feedback_raw[~df_feedback_raw['타임스탬프'].isnull()]
 #%% Add additional columns for analysis
 df_feedback['성별: 사용자-닮은 배우'] = df_feedback.apply(
     lambda x: user_actor_gender_class(x['1.  본인의 성별'], x['2. 결과 연예인의 성별']), axis=1)
+df_feedback['beautyGAN 만족도'] = df_feedback.apply(
+    lambda x: transform_beautyGAN_feedback_into_int(
+        x['6. 닮은 배우의 화장을 입힌 결과가 화장을 입히기 전과 비교했을 때 어떠신가요?']), axis=1)
 
 #%% Check basic correlation between features
 check_normality = {col: [
@@ -116,7 +119,8 @@ ax_col_shapiro.set_xscale('log')
 ax_col_shapiro.legend()
 ax_col_shapiro.set_xlim([1e-7, 0.15])
 ax_col_shapiro.invert_yaxis()
-ax_col_shapiro.set_yticklabels(['서비스 만족도', '서비스 체감 속도', '배우가 닮게 느껴지는 정도'])
+ax_col_shapiro.set_yticklabels(
+    ['서비스 만족도', '서비스 체감 속도', '배우가 닮게 느껴지는 정도', '메이크업 만족도'])
 
 fig_col_shapiro.tight_layout(rect=[0, 0.03, 1, 0.95])
 ax_col_shapiro.set_title('Shapiro test p-value')
@@ -132,8 +136,8 @@ sns.heatmap(
     annot=True,
     square=True,
     annot_kws={"size":25})
-ax_spearman.set_xticklabels(['서비스 만족도', '서비스 체감 속도', '배우가 닮게 느껴지는 정도'])
-ax_spearman.set_yticklabels(['서비스 만족도', '서비스 체감 속도', '배우가 닮게 느껴지는 정도'])
+ax_spearman.set_xticklabels(['서비스 만족도', '서비스 체감 속도', '배우가 닮게 느껴지는 정도', '메이크업 만족도'])
+ax_spearman.set_yticklabels(['서비스 만족도', '서비스 체감 속도', '배우가 닮게 느껴지는 정도', '메이크업 만족도'])
 
 fig_spearman.tight_layout()
 
